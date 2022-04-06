@@ -34,7 +34,9 @@ test-and-lint:
     name: node:10.23
   script:
     - yarn install --immutable
+    - yarn build-workspaces
     - yarn run lint
+    - yarn run relay
     - yarn run test-unit
   cache:
     key: $CI_PROJECT_PATH_SLUG-yarn-cache
