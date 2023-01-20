@@ -1,5 +1,6 @@
 /* eslint-disable */
 import configMerger from '../util/configMerger';
+import { MapMode } from '../constants';
 
 const CONFIG = 'bbnavi';
 const APP_TITLE = 'bbnavi Staging';
@@ -29,7 +30,6 @@ export default configMerger(walttiConfig, {
         CLIENT_SECRET: process.env.DATAHUB_O_AUTH_CLIENT_SECRET,
     },
     URL: {
-        HEADER_TITLE,
         DATAHUB: process.env.DATAHUB_URL || 'https://datahub.bbnavi.de',
         OTP: process.env.OTP_URL || `${API_URL}/otp/routers/default/`,
         MAP: {
@@ -38,7 +38,7 @@ export default configMerger(walttiConfig, {
             satellite: 'https://isk.geobasis-bb.de/mapproxy/dop20c_sentinel/service/wms',
             satellite_eu: 'https://isk.geobasis-bb.de/mapproxy/dop20c_sentinel/service/wms?eu',
             semiTransparent: SEMI_TRANSPARENT_MAP_URL,
-            bicycle: 'https://tiles.stadtnavi.eu/bicycle/{z}/{x}/{y}{r}.png',
+            bicycle: 'https://{s}.tile-cyclosm.openstreetmap.fr/cyclosm/{z}/{x}/{y}.png',
         },
         STOP_MAP: `${API_URL}/otp/routers/default/vectorTiles/stops/`,
         DYNAMICPARKINGLOTS_MAP: `${API_URL}/otp/routers/default/vectorTiles/parking/`,
@@ -65,7 +65,7 @@ export default configMerger(walttiConfig, {
         showDisruptions: false,
     },
 
-    availableLanguages: ['de', 'en', 'pl'],
+    availableLanguages: ['de', 'en'],
     defaultLanguage: 'de',
     issueTrackerUrl: '', // 'https://maengelmelder.service-bw.de/?lat=${lat}&lng=${lon}',
 
@@ -82,6 +82,9 @@ export default configMerger(walttiConfig, {
         safetyFactor: 0.4,
         slopeFactor: 0.3,
         timeFactor: 0.3,
+
+        includeParkAndRideSuggestions: true,
+        includeCarSuggestions: true,
     },
 
     defaultOptions: {
@@ -91,8 +94,6 @@ export default configMerger(walttiConfig, {
     itinerary: {
         delayThreshold: 60,
     },
-
-    modesWithNoBike: ['BICYCLE_RENT', 'WALK', 'CARPOOL', 'FLEX_DIRECT', 'FLEX_ACCESS', 'FLEX_EGRESS'],
 
     appBarLink: {
         name: 'Feedback',
@@ -164,6 +165,28 @@ export default configMerger(walttiConfig, {
         smallIconZoom: 17,
         minZoom: 15
     },
+
+    backgroundMaps: [{
+        mapMode: MapMode.Default,
+        messageId: 'map-type-streets',
+        defaultMessage: 'Streets (LGB)',
+        previewImage: '/img/maptype-streets-lgb.png',
+    }, {
+        mapMode: MapMode.Satellite,
+        messageId: 'map-type-satellite',
+        defaultMessage: 'Satellite',
+        previewImage: '/img/maptype-satellite.png',
+    }, {
+        mapMode: MapMode.Bicycle,
+        messageId: 'map-type-bicycle',
+        defaultMessage: 'Bicycle',
+        previewImage: '/img/maptype-bicycle.png',
+    }, {
+        mapMode: MapMode.OSM,
+        messageId: 'map-type-openstreetmap',
+        defaultMessage: 'OSM',
+        previewImage: '/img/maptype-streets-osm.png',
+    }],
 
     datahubTiles: {
         show: true,
@@ -298,6 +321,8 @@ export default configMerger(walttiConfig, {
     mergeStopsByCode: true,
 
     title: APP_TITLE,
+    appBarTitle: HEADER_TITLE,
+    titleAsHtml: APP_TITLE,
 
     favicon: './app/configurations/images/bbnavi/favicon.png',
 
@@ -307,6 +332,7 @@ export default configMerger(walttiConfig, {
 
     modeToOTP: {
         carpool: 'CARPOOL',
+        bus: 'BUS,FLEX_ACCESS,FLEX_EGRESS',
     },
 
     logo: 'bbnavi/stadtnavi-bbnavi-logo.svg',
@@ -539,7 +565,7 @@ export default configMerger(walttiConfig, {
 
         citybike: {
             availableForSelection: true,
-            defaultValue: false,
+            defaultValue: true,
             nearYouLabel: {
                 de: 'Sharing-Angebote in der Nähe',
                 en: 'Shared mobility near you'
@@ -669,7 +695,7 @@ export default configMerger(walttiConfig, {
     suggestCarMinDistance: 800,
     suggestWalkMaxDistance: 3000,
     suggestBikeAndPublicMinDistance: 3000,
-    suggestBikeAndParkMinDistance: 1000,
+    suggestBikeAndParkMinDistance: 3000,
 
     // live bus locations
     vehicles: false,
