@@ -18,6 +18,7 @@ stages:
   only:
     # todo: $CI_DEFAULT_BRANCH doesn't seem to work here?
     - bbnavi
+    - frankfurt-oder-dev
 
 .only-on-release-tags:
   only:

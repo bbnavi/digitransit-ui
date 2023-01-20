@@ -62,8 +62,9 @@ describe('planParamUtil', () => {
       const params = utils.preparePlanParams(config, false)(...defaultProps);
       const { modes } = params;
       expect(modes).to.deep.equal([
-        // In bbnavi, we always want direct Flex routing by default.
         { mode: 'FLEX', qualifier: 'DIRECT' },
+        { mode: 'FLEX', qualifier: 'ACCESS' },
+        { mode: 'FLEX', qualifier: 'EGRESS' },
 
         { mode: 'BUS' },
         { mode: 'WALK' },
@@ -75,8 +76,9 @@ describe('planParamUtil', () => {
       const params = utils.preparePlanParams(config, true)(...defaultProps);
       const { modes } = params;
       expect(modes).to.deep.equal([
-        // In bbnavi, we always want direct Flex routing by default.
         { mode: 'FLEX', qualifier: 'DIRECT' },
+        { mode: 'FLEX', qualifier: 'ACCESS' },
+        { mode: 'FLEX', qualifier: 'EGRESS' },
 
         { mode: 'BUS' },
         { mode: 'WALK' },
