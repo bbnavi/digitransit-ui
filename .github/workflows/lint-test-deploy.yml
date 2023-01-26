@@ -238,9 +238,8 @@ jobs:
   #       run: yarn run test-report
 
   docker-build-and-deploy:
-    # todo: revert
-    # if: github.ref_type == 'tag' && startsWith(github.ref_name, 'release_')
-    if: github.ref == 'refs/heads/test-ci'
+    # todo: remove `test-ci`
+    if: github.ref_type == 'tag' && startsWith(github.ref_name, 'release_') || github.ref == 'refs/heads/test-ci'
     # todo: re-add
     # needs:
     #   - lint
