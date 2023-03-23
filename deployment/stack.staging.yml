@@ -4,6 +4,8 @@ services:
   digitransit-ui:
     environment:
       - CONFIG=bbnavi-staging
+      # don't inherit value from stack.yml, only use it if it has been defined explicitly
+      - API_URL
     deploy:
       labels:
         traefik.frontend.rule: Host:staging.bbnavi.de
