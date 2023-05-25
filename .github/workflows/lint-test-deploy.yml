@@ -284,7 +284,7 @@ jobs:
           # https://mattdood.com/2022/3/github-actions-conditional-environment-variables-20220325012837
           if [[ -n "${{ github.ref_type == 'tag' && startsWith(github.ref_name, 'release_') || '' }}" ]]; then
             cfg="$(echo -n "${{ github.ref_name }}" | pcre2grep -o1 '(?:release_)([\w-]+)(?:_\d{4}-\d{2}-\d{2})')"
-            echo 'should-deploy="yes"' >>$GITHUB_OUTPUT  
+            echo 'should-deploy=yes' >>$GITHUB_OUTPUT  
           else
             cfg="${{ github.ref_name }}"
           fi
@@ -294,6 +294,7 @@ jobs:
         id: docker-meta
         run: |
           set -e -x -u -o pipefail # fail on errors
+          echo 'should-deploy: ${{ steps.bbnavi-config.outputs.should-deploy }}'
           echo "image=ghcr.io/${{ github.repository }}" >>$GITHUB_OUTPUT
           echo "permanent-tag=$(date +"%Y-%m-%dT%H.%M.%S")-${GITHUB_SHA:0:7}" >>$GITHUB_OUTPUT
           echo "release-tag=${{ github.ref_name }}" >>$GITHUB_OUTPUT
