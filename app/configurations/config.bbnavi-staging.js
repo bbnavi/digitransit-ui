@@ -14,8 +14,9 @@ export default configMerger(bbnaviConfig, {
     STOP_MAP: `${API_URL}/otp/routers/default/vectorTiles/stops/`,
     PARK_AND_RIDE_MAP: `${API_URL}/otp/routers/default/vectorTiles/parking/`,
     ROADWORKS_MAP: `${API_URL}/map/v1/cifs/`,
-    RENTAL_STATION_MAP: `${API_URL}/otp/routers/default/vectorTiles/citybikes/`,
-    REALTIME_RENTAL_STATION_MAP: `${API_URL}/otp/routers/default/vectorTiles/citybikes/`,
+    RENTAL_STATION_MAP: `${API_URL}/otp/routers/default/vectorTiles/rentalStations/`,
+    RENTAL_VEHICLE_MAP: `${API_URL}/otp/routers/default/vectorTiles/rentalVehicles/`,
+    REALTIME_RENTAL_STATION_MAP: `${API_URL}/otp/routers/default/vectorTiles/realtimeRentalStations/`,
   },
 
   socialMedia: {
