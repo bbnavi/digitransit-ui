@@ -3,9 +3,9 @@ name: lint, test & push Docker image
 on:
   push:
     branches:
-      - '*'
+      - 'epam-*'
     tags:
-      - 'release_*'
+      - 'epam-release_*'
   pull_request:
     branches:
       - '*'
