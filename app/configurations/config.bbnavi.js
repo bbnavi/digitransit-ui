@@ -193,7 +193,7 @@ export default configMerger(walttiConfig, {
         previewImage: '/img/maptype-streets-osm.png',
     }],
 
-    /*datahubTiles: {
+    datahubTiles: {
         show: true,
         smallIconZoom: 17,
         minZoom: 15,
@@ -222,13 +222,13 @@ export default configMerger(walttiConfig, {
             baseUrl: `${DATAHUB_TILES_URL}/public.poi_coords_e_bike_rentals/`,
             vectorTileLayer: 'public.poi_coords_e_bike_rentals',
         }],
-    }, */
+    }, 
 
-    /*chargingStations: {
+    chargingStations: {
         show: true,
         smallIconZoom: 14,
         minZoom: 14
-    }, */
+    }, 
 
     cityBike: {
         minZoomStopsNearYou: 10,
