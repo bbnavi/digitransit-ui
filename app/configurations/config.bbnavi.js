@@ -48,8 +48,8 @@ export default configMerger(walttiConfig, {
         RENTAL_VEHICLE_MAP: `${API_URL}/otp/routers/default/vectorTiles/rentalVehicles/`,
         REALTIME_RENTAL_STATION_MAP: `${API_URL}/otp/routers/default/vectorTiles/realtimeRentalStations/`,
         WEATHER_STATIONS_MAP: '', // `${API_URL}/map/v1/weather-stations/`,
-        CHARGING_STATIONS_MAP: 'https://ocpdb.bbnavi.de/tiles/{z}/{x}/{y}.mvt',
-        CHARGING_STATION_DETAILS_API: 'https://ocpdb.bbnavi.de/api/ocpi/2.2/location/',
+        /*CHARGING_STATIONS_MAP: 'https://ocpdb.bbnavi.de/tiles/{z}/{x}/{y}.mvt',
+        CHARGING_STATION_DETAILS_API: 'https://ocpdb.bbnavi.de/api/ocpi/2.2/location/', */
         PELIAS: `${process.env.GEOCODING_BASE_URL || GEOCODING_BASE_URL}/search`,
         PELIAS_REVERSE_GEOCODER: `${
             process.env.GEOCODING_BASE_URL || GEOCODING_BASE_URL
@@ -193,7 +193,7 @@ export default configMerger(walttiConfig, {
         previewImage: '/img/maptype-streets-osm.png',
     }],
 
-    datahubTiles: {
+    /*datahubTiles: {
         show: true,
         smallIconZoom: 17,
         minZoom: 15,
@@ -222,13 +222,13 @@ export default configMerger(walttiConfig, {
             baseUrl: `${DATAHUB_TILES_URL}/public.poi_coords_e_bike_rentals/`,
             vectorTileLayer: 'public.poi_coords_e_bike_rentals',
         }],
-    },
+    }, */
 
-    chargingStations: {
+    /*chargingStations: {
         show: true,
         smallIconZoom: 14,
         minZoom: 14
-    },
+    }, */
 
     cityBike: {
         minZoomStopsNearYou: 10,
