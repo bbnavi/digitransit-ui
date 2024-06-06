@@ -24,7 +24,7 @@ export default class DatahubTiles {
     return fetch(
       `${this.baseUrl}${
         this.tile.coords.z + (this.tile.props.zoomOffset || 0)
-      }/${this.tile.coords.x}/${this.tile.coords.y}.pbf`,
+      }/${this.tile.coords.x}/${this.tile.coords.y}`,
     ).then(res => {
       if (!res.ok) {
         return undefined;
